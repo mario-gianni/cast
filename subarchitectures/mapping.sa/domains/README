@@ -1,0 +1,3 @@
+HFC takes input from .nt files, i.e., in n-tuple format.
+You can easily convert an XML-based .owl file into a .nt file by executing
+$ rapper INPUTFILE.owl > OUTPUFILE.nt 

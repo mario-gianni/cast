@@ -1,0 +1,34 @@
+HOST localhost
+
+# Basic dialogue.sa setup.
+SUBARCHITECTURE dialogue
+
+JAVA WM	cast.architecture.SubarchitectureWorkingMemory
+JAVA TM	cast.architecture.AlwaysPositiveTaskManager
+
+VARDEFAULT mary_server_host=localhost
+VARDEFAULT mary_voice=dfki-spike-hsmm
+#VARDEFAULT mary_voice=cmu-slt-hsmm
+
+JAVA GD tts-mary    de.dfki.lt.tr.cast.dialogue.MaryTTS --serverHost %(mary_server_host) --serverPort 59125 --log true --voice %(mary_voice) --locale en-GB #--debug true
+
+VARDEFAULT irealize_abd_domain=subarchitectures/dialogue.sa/resources/abduction/cogx/current/INDEX.G.txt
+VARDEFAULT cplan_rules=subarchitectures/dialogue.sa/resources/contentplanning/allRuleFiles.trf
+VARDEFAULT realize_grammar=subarchitectures/dialogue.sa/resources/grammars/openccg/moloko.v6/grammar.xml
+VARDEFAULT realize_ngrams=subarchitectures/dialogue.sa/resources/grammars/openccg/moloko.v6/ngram-corpus.txt
+
+
+# intention realisation
+JAVA MG cplan                de.dfki.lt.tr.cast.dialogue.ContentPlanner --domainFile %(cplan_rules) --contentRel Content --log true
+JAVA MG realizer             de.dfki.lt.tr.cast.dialogue.CCGRealizer --ccg %(realize_grammar) --ngrams %(realize_ngrams) --log true
+
+# NIFTi Y2 eval components
+JAVA MG planverb de.dfki.lt.tr.cast.dialogue.NiftiY2PlanVerbGenerator --startup_utterance "Robot to operator. I am at your service." --log true
+
+## ROS-CAST BRIDGE AND GUI MONITOR
+# INCLUDE shared/ros_cast_bridge.sa/ros_cast_bridge.cast
+# INCLUDE shared/gui.sa/gui.cast
+
+## ROMA PLANNER
+
+## FUNCMAPPING...

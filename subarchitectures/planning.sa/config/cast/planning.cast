@@ -1,0 +1,6 @@
+HOST localhost
+
+SUBARCHITECTURE	Planning
+CPP	WM	SubarchitectureWorkingMemory
+CPP	TM	AlwaysPositiveTaskManager
+CPP	MG	VPPlanner	VPPlanner

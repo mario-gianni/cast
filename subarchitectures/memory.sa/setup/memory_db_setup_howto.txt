@@ -1,0 +1,100 @@
+how to set up a PostgreSQL/PostGIS data base to run memory / elm
+================================================================
+
+0	[you can try your luck with the script provided as:
+	". scripts-and-config-files/i-m-feeling-lucky.sh"
+	
+	if this script runs sucessfully then you are done with
+	installing and setting up the database for elm, and you
+	do not need to follow step 1-2-3!]
+   
+
+1	install required software
+
+	   software required for running ELM includes
+		   - Java 5+
+		   - PostgreSQL 8.2+ with JDBC drivers
+		   (version 8.4 is recommended to have this setup run
+	 	   as smooth as possible)
+		   - PostGIS
+		   - the Java Topology Suite (JTS) library 
+		   (at least version 1.8.0; on the machine running elm; 
+		   comes with ELM in subdirectory lib)
+		   - the jgrapht graph library 
+		   (at least version 0.8.1; on the machine running elm; 
+		   comes with elm in subdirectory lib)
+		   - pgAdmin - gui for administration of postgresql databases
+
+	   if you are running a Ubuntu 10.04 / 10.10, you can install the 
+	   PostgreSQL and PostGIS packages from a root shell as follows:
+
+	   apt-get install postgresql-client-common \
+		   postgresql-client-8.4 postgresql-8.4-postgis \
+		   postgresql-common postgresql-8.4 \
+		   postgresql-contrib-8.4 libpostgis-java libpg-java pgadmin3
+
+	[or you can also try your luck with a script provided as: 
+	". scripts-and-config-files/install-postgresql-postgis.sh"]
+
+
+2	database and PostGIS setup
+
+	this part of the setup process can be devided into three parts.
+
+	a) as user root run "./db-setup-part-a.sh"
+	   from within subdirectory "scripts-and-config-files".
+
+	   this will create a database user "elm" for which you need
+	   to assign a password. you should remember this password as
+	   you will need it to connect to the DB later on.
+
+	   it will also do some PostGIS-specific setup. (for the latter
+	   it is assumed that you have the files postgis.sql and 
+	   spatial_ref_sys.sql in /usr/share/postgresql/8.4/contrib. if
+	   this is not the case you may need to fix the path.)
+
+	b) next you need alter a PostgreSQL configuration file, namely
+	   pg_hba.conf (location e.g. /etc/postgresql/8.4/main/pg_hba.conf), 
+	   as root. 
+
+	   this file governs which kind of accesses are allowed
+	   from where for which user. (so be aware of possible implications
+	   for your systems security!)
+
+	   for a ubuntu 10.04 / 10.10 running PostgreSQL 8.4 you may try
+	   to replace the file with a sample file provided (as root): 
+
+	      mv /etc/postgresql/8.4/main/pg_hba.conf \
+		   /etc/postgresql/8.4/main/pg_hba.conf.backup.memory && \
+
+	      cp scripts-and-config-files/pg_hba.conf.new \
+		   /etc/postgresql/8.4/main/pg_hba.conf
+
+	   now restart PostgreSQL for changes to take effect (as root)
+
+		   /etc/init.d/postgresql restart
+
+	[or you can also try your luck with a script provided as: 
+	". scripts-and-config-files/db-setup-part-b.sh"]
+
+	c) as root run "./db-setup-part-c.sh"
+	   from within subdirectory "scripts-and-config-files".
+
+	this will create the actual elm database. after successful
+	completion of this step elm should be ready to use.
+
+
+3	updating your $CLASSPATH
+
+	   after installation and configuration make sure to have the following jars 
+	   in the $CLASSPATH of the user *which is to run the elm software*: 
+		- postgis.jar
+		- postgresql.jar
+		- postgresql-jdbc3-x.y.jar (where x.y is the release number)
+
+	   on ubuntu you can usually find these under /usr/share/java
+
+	[or you can also try your luck with a script provided as: 
+	". scripts-and-config-files/update-classpath-for-elm.sh"]
+
+

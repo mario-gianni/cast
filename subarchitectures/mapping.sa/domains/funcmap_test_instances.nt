@@ -1,0 +1,3 @@
+<funcmap:alfaromeo159sw> <rdf:type> <funcmap:Alfa159Sportwagon> .
+<funcmap:alfaromeo159sn> <rdf:type> <funcmap:Alfa159Saloon> .
+<funcmap:busX> <rdf:type> <funcmap:Bus> .

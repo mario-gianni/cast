@@ -1,0 +1,7 @@
+# A very basic top-level CAST system instantiation.
+
+HOST localhost
+
+INCLUDE dialogue.cast
+INCLUDE shared/planning.sa/basic.cast
+INCLUDE shared/navigation.sa/dummy.cast

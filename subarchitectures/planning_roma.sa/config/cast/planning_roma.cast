@@ -1,0 +1,27 @@
+HOST localhost
+
+SUBARCHITECTURE	PlanningROMA
+CPP	WM	SubarchitectureWorkingMemory
+CPP	TM	AlwaysPositiveTaskManager
+
+
+#CPP MG RobotStatusWriter RobotStatusWriter
+
+CPP MG ExecutionMonitoring ExecutionMonitoring
+
+
+
+CPP MG ActionFailureManager ActionFailureManager
+CPP MG TopoSegBuilderComponent TopoSegBuilderComponent
+CPP MG NavigationComponent NavigationComponent
+CPP MG LidarComponent LidarComponent
+CPP MG LocomotionComponent LocomotionComponent
+CPP MG TopoSegReaderComponent TopoSegReaderComponent
+CPP MG GapDetectionComponent GapDetectionComponent
+
+CPP MG AREInterfaceComponent AREInterfaceComponent
+
+CPP MG DiagnosticComponent DiagnosticComponent
+
+#CPP MG TaskWriter TaskWriter
+

@@ -1,0 +1,48 @@
+HOST localhost
+
+# dialogue.sa
+VARDEFAULT mary_server_host=localhost
+VARDEFAULT mary_voice=dfki-spike-hsmm
+#INCLUDE shared/dialogue.sa/minimal.cast
+INCLUDE shared/dialogue.sa/default+gui.cast
+INCLUDE shared/dialogue.sa/gui-niftigui.cast
+#JAVA MG wizard-gui eu.nifti.wizard.DialogueWizard --log true --debug true
+# NIFTi Y2 eval components
+JAVA MG planverb de.dfki.lt.tr.cast.dialogue.NiftiY2PlanVerbGenerator --startup_utterance "CAST system ready." --wait_for_new_car 2000 --log true # "This is the robot speaking. I am ready."
+
+## ROS-CAST BRIDGE AND GUI MONITOR
+#INCLUDE shared/ros_cast_bridge.sa/ros_cast_bridge.cast
+#INCLUDE shared/gui.sa/gui.cast
+
+# context.sa
+INCLUDE shared/context.sa/reference-resolution.cast
+JAVA MG dummy-fwd-grounder de.dfki.lt.tr.cast.dialogue.DummyForwardResolver
+
+# func mapping
+#INCLUDE shared/mapping.sa/mapping.cast
+
+#SUBARCHITECTURE	Planning
+#JAVA WM			 cast.architecture.SubarchitectureWorkingMemory
+#JAVA TM			 cast.architecture.AlwaysPositiveTaskManager
+
+
+SUBARCHITECTURE PlanningROMA
+JAVA WM			 cast.architecture.SubarchitectureWorkingMemory
+JAVA TM			 cast.architecture.AlwaysPositiveTaskManager
+#CPP     WM      SubarchitectureWorkingMemory
+#CPP     TM      AlwaysPositiveTaskManager
+
+#CPP MG RobotStatusWriter RobotStatusWriter
+
+#CPP MG ExecutionMonitoring ExecutionMonitoring
+
+#CPP MG ActionFailureManager ActionFailureManager
+#CPP MG TopoSegBuilderComponent TopoSegBuilderComponent
+#CPP MG NavigationComponent NavigationComponent
+#CPP MG LidarComponent LidarComponent
+#CPP MG LocomotionComponent LocomotionComponent
+#CPP MG TopoSegReaderComponent TopoSegReaderComponent
+#CPP MG GapDetectionComponent GapDetectionComponent
+
+#CPP MG TaskWriter TaskWriter
+JAVA MG intToPlannerTask eu.nifti.planning.cast.IntentionToRomaPlanningTaskGenerator --log true

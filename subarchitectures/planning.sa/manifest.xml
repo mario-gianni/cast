@@ -1,0 +1,17 @@
+<package>
+  <description brief="nifti planning cast">
+     nifti planning ros-cast component
+  </description>
+  <author>Harmish</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/ActionTranslator</url>
+  <depend package="roscpp"/>
+  <depend package="rospy"/>
+  <depend package="std_msgs"/>
+  <depend package="eclipse_prolog_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="bullet"/>
+</package>
+
+

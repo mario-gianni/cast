@@ -1,0 +1,9 @@
+HOST localhost
+
+SUBARCHITECTURE ros_cast_bridge 
+
+CPP WM SubarchitectureWorkingMemory
+CPP TM AlwaysPositiveTaskManager
+CPP MG NIFTiCentralServer NIFTiCentralServer
+CPP MG ROS_CAST_Converter ROS_CAST_Converter
+

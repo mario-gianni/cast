@@ -1,0 +1,5 @@
+#!/bin/sh
+
+CMD=../../../../../../tools/abducer/bin/check-abd
+
+$CMD U*.abd G*.abd lexicon.abd

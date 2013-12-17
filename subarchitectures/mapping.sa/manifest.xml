@@ -1,0 +1,34 @@
+<package>
+  <description brief="CarVisibilityFunctionalMapper">
+
+     CarVisibilityFunctionalMapper
+
+  </description>
+  <author>Shanker Keshavdas (DFKI)</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/CarVisibilityFunctionalMapper</url>
+  <depend package="roscpp"/>
+  <depend package="rospy"/>
+  <depend package="std_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="nav_msgs"/>
+  <depend package="VirtualCarInfoPublisher"/>
+  <depend package="vision_msgs"/>
+  <depend package="move_base_msgs" />
+  <depend package="actionlib" />
+  <depend package="bullet" />
+  <depend package="visualization_msgs"/>
+  <depend package="kdl"/>
+  <depend package="tf"/>
+  <depend package="move_base_msgs"/>
+  <depend package="actionlib"/>
+  <depend package="eu_nifti_env"/>
+  <depend package="eu_nifti_env_msg_ros"/>
+  <depend package="eu_nifti_ocu_msg_ros"/>
+  <depend package="functional_mapping_helper"/>
+  <depend package="functional_understanding_of_unstructured_environments"/>
+
+</package>
+
+

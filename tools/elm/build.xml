@@ -1,0 +1,73 @@
+<!-- Inner build file for a module in the CogX system -->
+<project name="tools-elm" default="compile" basedir=".">
+	<property name="projectroot.dir" value="${basedir}/../.." />
+	<property file="${projectroot.dir}/build.properties" />
+
+	<path id="build.classpath">
+		<pathelement path="${ice.jar}" />
+		<pathelement path="${cast.jar}" />
+		<pathelement path="${log4j.jar}" />
+	</path>
+
+	<!-- Controls what is compiled -->
+	<property name="src.dir" value="./src/java" />
+	<property name="slice.dir" value="./src/slice" />
+	<property name="generated.dir" value="./src-generated/java" />
+
+	<!-- Includes the slice2java task from Ice. Requires ant-ice.jar to be in your classpath -->
+	<taskdef name="slice2java" classname="Slice2JavaTask">
+	</taskdef>
+	
+	<!-- =================================================================== -->
+	<!-- Preparation                                                         -->
+	<!-- =================================================================== -->
+	<target name="prepare"  description="any project-specific init">
+		<mkdir dir="${output.dir}"/>
+		<mkdir dir="${generated.dir}" />
+		<tstamp/>
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Source generation                                                   -->
+	<!-- =================================================================== -->
+	<target name="slice" depends="prepare" description="generates source from slice">
+	</target>
+
+	<target name="compile-slice" depends="slice" description="compiles generated source from slice">
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Expand libraries                                                    -->
+	<!-- =================================================================== -->
+
+	<target name="expandlibs" depends="prepare">
+		<echo message="Expanding external libraries for castutils to output/classes" />
+		<unzip dest="${output.dir}" src="./lib/jgrapht-jdk1.5.jar" />
+		<unzip dest="${output.dir}" src="./lib/jts-1.8.jar" />
+		<unzip dest="${output.dir}" src="./lib/commons-codec-1.4.jar" />
+	</target>
+	
+	<!-- =================================================================== -->
+	<!-- Basic compilation                                                   -->
+	<!-- =================================================================== -->
+	<target name="compile" depends="expandlibs,slice" description="compiles the source code">
+	  <javac srcdir="${src.dir}" destdir="${output.dir}" debug="${debug}" deprecation="${deprecation}" optimize="${optimize}" debuglevel="lines,vars,source">
+	    <classpath>
+	      <fileset dir="lib">
+		<include name="*.jar"/>
+	      </fileset>	      
+	    </classpath>
+	  </javac>
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Cleanup                                                             -->
+	<!-- =================================================================== -->
+	<target name="clean">
+	  <delete dir="${output.dir}/elm" />
+	<delete file="${src.dir}/.depend" />
+	<delete dir="${generated.dir}" />
+	</target>
+
+
+</project>

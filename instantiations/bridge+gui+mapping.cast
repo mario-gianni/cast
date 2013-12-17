@@ -1,0 +1,4 @@
+HOST localhost
+
+INCLUDE bridge+gui.cast
+INCLUDE shared/mapping.sa/mapping.cast

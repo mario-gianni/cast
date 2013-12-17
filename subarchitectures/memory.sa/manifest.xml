@@ -1,0 +1,15 @@
+<package>
+  <description brief="RosHBReader">
+     RosHBReader
+  </description>
+  <author>Harmish</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/ActionTranslator</url>
+  <depend package="roscpp"/>
+  <depend package="rospy"/>
+  <depend package="std_msgs"/>
+	<depend package="geometry_msgs"/>
+</package>
+
+

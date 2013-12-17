@@ -1,0 +1,1428 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY funcmap "http://www.nifti.eu/funcmap#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
+    <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.nifti.eu/funcmap#"
+     xml:base="http://www.nifti.eu/funcmap"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:funcmap="http://www.nifti.eu/funcmap#">
+    <owl:Ontology rdf:about=""/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#hasPart -->
+
+    <owl:ObjectProperty rdf:about="#hasPart">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:range rdf:resource="#Part"/>
+        <rdfs:domain rdf:resource="#PhysicalObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#hasHeight -->
+
+    <owl:DatatypeProperty rdf:about="#hasHeight">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#hasHeightAboveGround -->
+
+    <owl:DatatypeProperty rdf:about="#hasHeightAboveGround">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#hasHorizontalAngleOfView -->
+
+    <owl:DatatypeProperty rdf:about="#hasHorizontalAngleOfView">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Camera"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#hasIndex -->
+
+    <owl:DatatypeProperty rdf:about="#hasIndex">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Part"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#hasLength -->
+
+    <owl:DatatypeProperty rdf:about="#hasLength">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#hasOrientation -->
+
+    <owl:DatatypeProperty rdf:about="#hasOrientation">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Part"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#hasPhotosensitiveArrayHeight -->
+
+    <owl:DatatypeProperty rdf:about="#hasPhotosensitiveArrayHeight">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#CCDSensor"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#hasPhotosensitiveArrayWidth -->
+
+    <owl:DatatypeProperty rdf:about="#hasPhotosensitiveArrayWidth">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#CCDSensor"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#hasPosX -->
+
+    <owl:DatatypeProperty rdf:about="#hasPosX">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Part"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#hasPosY -->
+
+    <owl:DatatypeProperty rdf:about="#hasPosY">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Part"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#hasPosZ -->
+
+    <owl:DatatypeProperty rdf:about="#hasPosZ">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Part"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#hasVerticalAngleOfView -->
+
+    <owl:DatatypeProperty rdf:about="#hasVerticalAngleOfView">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Camera"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#hasVisualRange -->
+
+    <owl:DatatypeProperty rdf:about="#hasVisualRange">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Camera"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#hasWidth -->
+
+    <owl:DatatypeProperty rdf:about="#hasWidth">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#AcousticDevice -->
+
+    <owl:Class rdf:about="#AcousticDevice">
+        <rdfs:subClassOf rdf:resource="#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Actuator -->
+
+    <owl:Class rdf:about="#Actuator">
+        <rdfs:subClassOf rdf:resource="#Mechanism"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Adult -->
+
+    <owl:Class rdf:about="#Adult">
+        <rdfs:subClassOf rdf:resource="#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Alfa159 -->
+
+    <owl:Class rdf:about="#Alfa159">
+        <rdfs:subClassOf rdf:resource="#CarModel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Alfa159Saloon -->
+
+    <owl:Class rdf:about="#Alfa159Saloon">
+        <rdfs:subClassOf rdf:resource="#Alfa159"/>
+        <rdfs:subClassOf rdf:resource="#Sedan"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Alfa159Sportwagon -->
+
+    <owl:Class rdf:about="#Alfa159Sportwagon">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Alfa159"/>
+                    <rdf:Description rdf:about="#StationWagon"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasPart"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="#Window"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeight"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0.5</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeightAboveGround"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">1.2</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasIndex"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">0</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasOrientation"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">180</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosX"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">-0.790</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosY"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0.675</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasWidth"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0.500</owl:hasValue>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasPart"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="#Window"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeight"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0.5</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeightAboveGround"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">1.2</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasIndex"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">1</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasOrientation"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">180</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosX"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">-0.790</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosY"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">-0.675</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasWidth"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0.500</owl:hasValue>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasPart"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="#Window"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeight"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0.5</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeightAboveGround"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">1.2</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasIndex"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">2</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasOrientation"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0.270</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosX"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosY"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">-2.0</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasWidth"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0.800</owl:hasValue>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasPart"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="#Window"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeight"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0.5</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeightAboveGround"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">1.2</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasIndex"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">3</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasOrientation"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosX"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0.790</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosY"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">-0.675</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasWidth"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0.500</owl:hasValue>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasPart"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="#Window"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeight"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0.5</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeightAboveGround"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">1.2</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasIndex"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">4</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasOrientation"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosX"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0.790</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosY"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0.675</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasWidth"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">0.500</owl:hasValue>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasLength"/>
+                        <owl:hasValue rdf:datatype="&xsd;float">4.5</owl:hasValue>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasWidth"/>
+                        <owl:hasValue rdf:datatype="&xsd;float">1.6</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#AnimateThing -->
+
+    <owl:Class rdf:about="#AnimateThing">
+        <rdfs:subClassOf rdf:resource="#Whole"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Artefact -->
+
+    <owl:Class rdf:about="#Artefact">
+        <rdfs:subClassOf rdf:resource="#Whole"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Baby -->
+
+    <owl:Class rdf:about="#Baby">
+        <rdfs:subClassOf rdf:resource="#Child"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Barrel -->
+
+    <owl:Class rdf:about="#Barrel">
+        <rdfs:subClassOf rdf:resource="#Container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Barrier -->
+
+    <owl:Class rdf:about="#Barrier">
+        <rdfs:subClassOf rdf:resource="#Structure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Being -->
+
+    <owl:Class rdf:about="#Being">
+        <rdfs:subClassOf rdf:resource="#AnimateThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Bicycle -->
+
+    <owl:Class rdf:about="#Bicycle">
+        <rdfs:subClassOf rdf:resource="#WheeledVehicle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Bus -->
+
+    <owl:Class rdf:about="#Bus">
+        <rdfs:subClassOf rdf:resource="#MotorVehicle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#BusModel -->
+
+    <owl:Class rdf:about="#BusModel">
+        <rdfs:subClassOf rdf:resource="#Bus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#BusType -->
+
+    <owl:Class rdf:about="#BusType">
+        <rdfs:subClassOf rdf:resource="#Bus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#CCDSensor -->
+
+    <owl:Class rdf:about="#CCDSensor">
+        <rdfs:subClassOf rdf:resource="#OpticalDevice"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Camera -->
+
+    <owl:Class rdf:about="#Camera">
+        <rdfs:subClassOf rdf:resource="#PhotographicEquipment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#CameraModel -->
+
+    <owl:Class rdf:about="#CameraModel">
+        <rdfs:subClassOf rdf:resource="#Camera"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Car -->
+
+    <owl:Class rdf:about="#Car">
+        <rdfs:subClassOf rdf:resource="#MotorVehicle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#CarModel -->
+
+    <owl:Class rdf:about="#CarModel">
+        <rdfs:subClassOf rdf:resource="#Car"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#CarType -->
+
+    <owl:Class rdf:about="#CarType">
+        <rdfs:subClassOf rdf:resource="#Car"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#CausalAgent -->
+
+    <owl:Class rdf:about="#CausalAgent">
+        <rdfs:subClassOf rdf:resource="#PhysicalEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#ChemicalSubstance -->
+
+    <owl:Class rdf:about="#ChemicalSubstance">
+        <rdfs:subClassOf rdf:resource="#Material"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Child -->
+
+    <owl:Class rdf:about="#Child">
+        <rdfs:subClassOf rdf:resource="#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Coach -->
+
+    <owl:Class rdf:about="#Coach">
+        <rdfs:subClassOf rdf:resource="#BusType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Container -->
+
+    <owl:Class rdf:about="#Container">
+        <rdfs:subClassOf rdf:resource="#Artefact"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Convertible -->
+
+    <owl:Class rdf:about="#Convertible">
+        <rdfs:subClassOf rdf:resource="#CarType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Danger -->
+
+    <owl:Class rdf:about="#Danger">
+        <rdfs:subClassOf rdf:resource="#CausalAgent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#DefaultCar -->
+
+    <owl:Class rdf:about="#DefaultCar">
+        <rdfs:subClassOf rdf:resource="#CarModel"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasPart"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="#Window"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeight"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">0.5</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeightAboveGround"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">1.2</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasIndex"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">0</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasOrientation"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">90</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosX"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">0.675</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosY"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">0.79</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasWidth"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">0.500</owl:hasValue>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasPart"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="#Window"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeight"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">0.5</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeightAboveGround"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">1.2</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasIndex"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">1</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasOrientation"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">90</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosX"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">-0.675</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosY"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">0.79</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasWidth"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">0.500</owl:hasValue>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasPart"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="#Window"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeight"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">0.5</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeightAboveGround"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">1.2</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasIndex"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">2</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasOrientation"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">180</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosX"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">-2.0</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosY"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">0</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasWidth"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">0.800</owl:hasValue>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasPart"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="#Window"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeight"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">0.5</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeightAboveGround"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">1.2</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasIndex"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">3</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasOrientation"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">-90</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosX"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">-0.675</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosY"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">-0.79</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasWidth"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">0.500</owl:hasValue>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasPart"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="#Window"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeight"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">0.5</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasHeightAboveGround"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">1.2</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasIndex"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">4</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasOrientation"/>
+                                        <owl:hasValue rdf:datatype="&xsd;float">-90</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosX"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">0.675</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasPosY"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">-0.79</owl:hasValue>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#hasWidth"/>
+                                        <owl:hasValue rdf:datatype="&xsd;double">0.500</owl:hasValue>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasLength"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">4.5</owl:hasValue>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasWidth"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">1.6</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Device -->
+
+    <owl:Class rdf:about="#Device">
+        <rdfs:subClassOf rdf:resource="#Instrumentation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Door -->
+
+    <owl:Class rdf:about="#Door">
+        <rdfs:subClassOf rdf:resource="#MovableBarrier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#ElectricalDevice -->
+
+    <owl:Class rdf:about="#ElectricalDevice">
+        <rdfs:subClassOf rdf:resource="#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#ElectronicDevice -->
+
+    <owl:Class rdf:about="#ElectronicDevice">
+        <rdfs:subClassOf rdf:resource="#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#ElectronicEquipment -->
+
+    <owl:Class rdf:about="#ElectronicEquipment">
+        <rdfs:subClassOf rdf:resource="#Equipment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Equipment -->
+
+    <owl:Class rdf:about="#Equipment">
+        <rdfs:subClassOf rdf:resource="#Instrumentation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#FerrariNUM -->
+
+    <owl:Class rdf:about="#FerrariNUM">
+        <rdfs:subClassOf rdf:resource="#CarModel"/>
+        <rdfs:subClassOf rdf:resource="#SportsCar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#FiatDucato -->
+
+    <owl:Class rdf:about="#FiatDucato">
+        <rdfs:subClassOf rdf:resource="#BusModel"/>
+        <rdfs:subClassOf rdf:resource="#Minibus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Force -->
+
+    <owl:Class rdf:about="#Force">
+        <rdfs:subClassOf rdf:resource="#CausalAgent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Glass -->
+
+    <owl:Class rdf:about="#Glass">
+        <rdfs:subClassOf rdf:resource="#Solid"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#HAZMAT -->
+
+    <owl:Class rdf:about="#HAZMAT">
+        <rdfs:subClassOf rdf:resource="#Material"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Handcart -->
+
+    <owl:Class rdf:about="#Handcart">
+        <rdfs:subClassOf rdf:resource="#WheeledVehicle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Instrumentation -->
+
+    <owl:Class rdf:about="#Instrumentation">
+        <rdfs:subClassOf rdf:resource="#Artefact"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Ladybug3 -->
+
+    <owl:Class rdf:about="#Ladybug3">
+        <rdfs:subClassOf rdf:resource="#CameraModel"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasVerticalAngleOfView"/>
+                <owl:hasValue rdf:datatype="&xsd;integer">90</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasVisualRange"/>
+                <owl:hasValue rdf:datatype="&xsd;double">3.0</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasPart"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="#SonyICX274Al"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="#hasPosX"/>
+                                <owl:hasValue rdf:datatype="&xsd;float">0.05</owl:hasValue>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="#hasPosY"/>
+                                <owl:hasValue rdf:datatype="&xsd;float">0</owl:hasValue>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="#hasPosZ"/>
+                                <owl:hasValue rdf:datatype="&xsd;float">0</owl:hasValue>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasHorizontalAngleOfView"/>
+                <owl:hasValue rdf:datatype="&xsd;integer">75</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Lens -->
+
+    <owl:Class rdf:about="#Lens">
+        <rdfs:subClassOf rdf:resource="#OpticalDevice"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Man -->
+
+    <owl:Class rdf:about="#Man">
+        <rdfs:subClassOf rdf:resource="#Adult"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Material -->
+
+    <owl:Class rdf:about="#Material">
+        <rdfs:subClassOf rdf:resource="#Substance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Matter -->
+
+    <owl:Class rdf:about="#Matter">
+        <rdfs:subClassOf rdf:resource="#PhysicalEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Mechanism -->
+
+    <owl:Class rdf:about="#Mechanism">
+        <rdfs:subClassOf rdf:resource="#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Minibus -->
+
+    <owl:Class rdf:about="#Minibus">
+        <rdfs:subClassOf rdf:resource="#BusType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Minivan -->
+
+    <owl:Class rdf:about="#Minivan">
+        <rdfs:subClassOf rdf:resource="#CarType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#MiscObject -->
+
+    <owl:Class rdf:about="#MiscObject">
+        <rdfs:subClassOf rdf:resource="#Artefact"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#MotorVehicle -->
+
+    <owl:Class rdf:about="#MotorVehicle">
+        <rdfs:subClassOf rdf:resource="#WheeledVehicle"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasWidth"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasLength"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasPart"/>
+                <owl:someValuesFrom rdf:resource="#Window"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Motorcycle -->
+
+    <owl:Class rdf:about="#Motorcycle">
+        <rdfs:subClassOf rdf:resource="#MotorVehicle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#MovableBarrier -->
+
+    <owl:Class rdf:about="#MovableBarrier">
+        <rdfs:subClassOf rdf:resource="#Barrier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#NaturalObject -->
+
+    <owl:Class rdf:about="#NaturalObject">
+        <rdfs:subClassOf rdf:resource="#Whole"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Oil -->
+
+    <owl:Class rdf:about="#Oil">
+        <rdfs:subClassOf rdf:resource="#ChemicalSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Opening -->
+
+    <owl:Class rdf:about="#Opening">
+        <rdfs:subClassOf rdf:resource="#Artefact"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#OpticalDevice -->
+
+    <owl:Class rdf:about="#OpticalDevice">
+        <rdfs:subClassOf rdf:resource="#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Pallette -->
+
+    <owl:Class rdf:about="#Pallette">
+        <rdfs:subClassOf rdf:resource="#MiscObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Part -->
+
+    <owl:Class rdf:about="#Part">
+        <rdfs:subClassOf rdf:resource="#PhysicalObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Person -->
+
+    <owl:Class rdf:about="#Person">
+        <rdfs:subClassOf rdf:resource="#Being"/>
+        <rdfs:subClassOf rdf:resource="#CausalAgent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#PhotographicEquipment -->
+
+    <owl:Class rdf:about="#PhotographicEquipment">
+        <rdfs:subClassOf rdf:resource="#Equipment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#PhysicalEntity -->
+
+    <owl:Class rdf:about="#PhysicalEntity">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#PhysicalObject -->
+
+    <owl:Class rdf:about="#PhysicalObject">
+        <rdfs:subClassOf rdf:resource="#PhysicalEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Pipe -->
+
+    <owl:Class rdf:about="#Pipe">
+        <rdfs:subClassOf rdf:resource="#MiscObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#RailwayCar -->
+
+    <owl:Class rdf:about="#RailwayCar">
+        <rdfs:subClassOf rdf:resource="#WheeledVehicle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Robot -->
+
+    <owl:Class rdf:about="#Robot">
+        <rdfs:subClassOf rdf:resource="#Mechanism"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasPart"/>
+                <owl:someValuesFrom rdf:resource="#Camera"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Scooter -->
+
+    <owl:Class rdf:about="#Scooter">
+        <rdfs:subClassOf rdf:resource="#Motorcycle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Sedan -->
+
+    <owl:Class rdf:about="#Sedan">
+        <rdfs:subClassOf rdf:resource="#CarType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Solid -->
+
+    <owl:Class rdf:about="#Solid">
+        <rdfs:subClassOf rdf:resource="#Matter"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#SonyICX274Al -->
+
+    <owl:Class rdf:about="#SonyICX274Al">
+        <rdfs:subClassOf rdf:resource="#CCDSensor"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasPhotosensitiveArrayHeight"/>
+                <owl:hasValue rdf:datatype="&xsd;float">0.00532</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasPhotosensitiveArrayWidth"/>
+                <owl:hasValue rdf:datatype="&xsd;float">0.0072</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#SportsCar -->
+
+    <owl:Class rdf:about="#SportsCar">
+        <rdfs:subClassOf rdf:resource="#CarType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#StationWagon -->
+
+    <owl:Class rdf:about="#StationWagon">
+        <rdfs:subClassOf rdf:resource="#CarType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Structure -->
+
+    <owl:Class rdf:about="#Structure">
+        <rdfs:subClassOf rdf:resource="#Artefact"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Substance -->
+
+    <owl:Class rdf:about="#Substance">
+        <rdfs:subClassOf rdf:resource="#Matter"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Trailer -->
+
+    <owl:Class rdf:about="#Trailer">
+        <rdfs:subClassOf rdf:resource="#WheeledVehicle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Trike -->
+
+    <owl:Class rdf:about="#Trike">
+        <rdfs:subClassOf rdf:resource="#Motorcycle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Truck -->
+
+    <owl:Class rdf:about="#Truck">
+        <rdfs:subClassOf rdf:resource="#MotorVehicle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Vehicle -->
+
+    <owl:Class rdf:about="#Vehicle">
+        <rdfs:subClassOf rdf:resource="#Artefact"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#WheeledVehicle -->
+
+    <owl:Class rdf:about="#WheeledVehicle">
+        <rdfs:subClassOf rdf:resource="#Vehicle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Whole -->
+
+    <owl:Class rdf:about="#Whole">
+        <rdfs:subClassOf rdf:resource="#PhysicalObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Window -->
+
+    <owl:Class rdf:about="#Window">
+        <rdfs:subClassOf rdf:resource="#Opening"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasPosX"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasHeight"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasHeightAboveGround"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasPosY"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasWidth"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#WindowPane -->
+
+    <owl:Class rdf:about="#WindowPane">
+        <rdfs:subClassOf rdf:resource="#MiscObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.nifti.eu/funcmap#Woman -->
+
+    <owl:Class rdf:about="#Woman">
+        <rdfs:subClassOf rdf:resource="#Adult"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+

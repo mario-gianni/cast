@@ -1,0 +1,203 @@
+%-------------------------------------------------------------------------
+% COMMAND: ACTION-MOTION
+%-------------------------------------------------------------------------
+
+% return to base.
+%@{return1_1:action-motion}(return ^ <Mood>imp ^ <Actor>(addressee1_1:entity ^ addressee) ^ <Subject>(addressee1_1:entity) ^ <Modifier>(to1_1:m-whereto ^ to ^ <Anchor>(entrance1_1:e-place ^ entrance ^ <Delimitation>unique ^ <Num>sg ^ <Quantification>specific)))
+understand : event : from_logical_form(Speaker, _Hearer, Nom) <-
+	i : sort(Nom, 'action-motion'),
+	i : feat_Mood(Nom, imp),
+	i : rel_Actor(Nom, ActorNom),
+		i : prop(ActorNom, addressee),
+	i : rel_Modifier(Nom, WhereNom),
+		i : prop(WhereNom, to),
+		i : rel_Anchor(WhereNom, AnchorNom),
+			i : prop(AnchorNom, entrance),
+
+	? understand : i : intention(Nom, Int),
+	int : agent(Int, Speaker) / p(1.0),
+	int : string_content(Int, type, 'movement') / p(1.0),
+	int : string_content(Int, subtype, 'return-to-base') / p(1.0).
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+% @{go1_3:action-motion}(go ^ <Mood>imp ^ <Actor>(addressee1_3:entity ^ addressee) ^ <Modifier>(left1_3:m-direction ^ left) ^ <Subject>(addressee1_3:entity))
+
+% go/turn DIR
+understand : event : from_logical_form(Speaker, _Hearer, Nom) <-
+	i : sort(Nom, 'action-motion'),
+	i : prop(Nom, Prop),
+	i : feat_Mood(Nom, imp),
+	i : rel_Actor(Nom, ActorNom),
+		i : prop(ActorNom, addressee),
+	i : rel_Modifier(Nom, DirNom),
+		i : sort(DirNom, 'm-direction'),
+		i : prop(DirNom, DirProp),
+
+	motion_into_direction(Prop, DirProp, Type, ArgName, ArgValue),
+
+	? understand : i : intention(Nom, Int),
+	
+	int : agent(Int, Speaker) / p(1.0),
+	int : string_content(Int, type, Type) / p(1.0),
+	int : string_content(Int, subtype, 'in-direction') / p(1.0),
+	int : string_content(Int, ArgName, ArgValue) / p(1.0).
+
+% FIXME: currently doesn't work: go to the DIRECTION
+% @{turn1_4:action-motion}(turn ^ <Mood>imp ^ <Actor>(addressee1_4:entity ^ addressee) ^ <Modifier>(to1_4:m-location ^ to ^ <Anchor>(left1_4:e-region ^ left ^ <Delimitation>unique ^ <Num>sg ^ <Quantification>specific)) ^ <Subject>(addressee1_4:entity))
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+motion_into_direction(Prop, DirProp, movement, 'move-direction', Arg) <-
+	prop_to_intention_type(Prop, movement),
+	dir_to_move_direction(DirProp, Arg).
+
+motion_into_direction(Prop, DirProp, turning, 'turn-direction', Arg) <-
+	prop_to_intention_type(Prop, turning),
+	dir_to_turn_direction(DirProp, Arg).
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+prop_to_intention_type(go, movement).
+prop_to_intention_type(move, movement).
+prop_to_intention_type(drive, movement).
+prop_to_intention_type(turn, turning).
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+dir_to_move_direction(left, 'LEFT').
+dir_to_move_direction(right, 'RIGHT').
+%dir_to_move_direction(forward, 'FORWARD').
+dir_to_move_direction(backward, 'BACKWARD').
+
+dir_to_turn_direction(left, 'LEFT').
+dir_to_turn_direction(right, 'RIGHT').
+
+%-------------------------------------------------------------------------
+
+% go forward
+understand : event : from_logical_form(Speaker, _Hearer, Nom) <-
+	i : sort(Nom, 'action-motion'),
+	i : prop(Nom, Prop),
+	i : feat_Mood(Nom, imp),
+	i : rel_Actor(Nom, ActorNom),
+		i : prop(ActorNom, addressee),
+	i : rel_Modifier(Nom, DirNom),
+		i : sort(DirNom, 'm-direction'),
+		i : prop(DirNom, forward),
+
+	prop_to_intention_type(Prop, movement),
+
+	? understand : i : intention(Nom, Int),
+
+	int : agent(Int, Speaker) / p(1.0),
+	int : string_content(Int, type, movement) / p(1.0),
+
+	? understand : is_grounded_forward(Nom, Target),
+	target_to_int_subtype(Int, Target).
+
+%-------------------------------------------------------------------------
+
+% go to X
+understand : event : from_logical_form(Speaker, _Hearer, Nom) <-
+	i : sort(Nom, 'action-motion'),
+	i : prop(Nom, Prop),
+%	i : feat_Mood(Nom, imp),
+	i : rel_Actor(Nom, _ActorNom),
+%		i : prop(ActorNom, addressee),
+
+	prop_to_intention_type(Prop, movement),
+
+	? understand : i : intention(Nom, Int),
+
+	int : agent(Int, Speaker) / p(1.0),
+	int : string_content(Int, type, movement) / p(1.0),
+
+	i : rel_Modifier(Nom, ModifNom),
+	target_reference_formula(ModifNom, Target),
+	target_to_int_subtype(Int, Target).
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+% for debugging/testing
+%target_reference_formula(Nom, coordinates("0.1,0.3,0.0")).
+%target_reference_formula(Nom, object(ptr(dialogue, "addr"))).
+
+%target_reference_formula(Nom, Target) <-
+%	i : rel_Anchor(Nom, AnchorNom),
+%	? understand : is_reference(AnchorNom, Target, _EpSt).
+
+target_reference_formula(Nom, Target) <-
+	i : prop(Nom, context),
+	? understand : is_reference(Nom, Target, _EpSt).
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+understand : is_reference(RefNom, Target, EpSt) <-
+	understand : referent_of(RefNom, RefTarget, EpSt) / reference_resolution,
+	? understand : i : decoded_target(RefTarget, Target).
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+target_to_int_subtype(Int, Decoded) <-
+	int : string_content(Int, subtype, 'to-target') / p(1.0),
+	int : string_content(Int, 'target', Decoded) / p(1.0).
+
+%target_to_int_subtype(Int, coordinates(Encoded)) <-
+%%target_to_int_subtype(Int) <-
+%%	? understand : i : decoded_target(coordinates(Encoded), coordinates(X, Y, Z)),
+%	int : string_content(Int, subtype, 'to-coordinates') / p(1.0),
+%	int : string_content(Int, 'coordinates', Encoded) / p(1.0).
+%
+%target_to_int_subtype(Int, object(WMA)) <-
+%	int : string_content(Int, subtype, 'to-object') / p(1.0),
+%	int : address_content(Int, 'object-id', WMA) / p(1.0).
+
+%-------------------------------------------------------------------------
+%
+%m_action_effects(S, H, EpSt, Int, Ref, go) <-
+%	get_topic_referent(S, H, shared(S, H), Int, Ref, Ref, BId),  % XXX the presupposed belief not constructed
+%	int : post(Int, state([position, agent(H), 'location-of'(BId)])) / p(1.0).
+%
+%m_action_effects(S, H, EpSt, Int, Ref, move) <-
+%	m_action_effect(S, H, Int, Ref, go).
+%
+%m_action_effects(S, H, EpSt, Int, Ref, turn) <-
+%	get_topic_referent(S, H, EpSt, Int, Ref, Ref, BId),  % XXX the presupposed belief not constructed
+%	int : post(Int, state(['orientation-towards', agent(H), 'location-of'(BId)])) / p(1.0).
+
+%-------------------------------------------------------------------------
+
+understand : direction(Nom, Dir) <-
+%	i : sort(Nom, 'm-direction'),  % m-whereto
+	i : prop(Nom, Prop),
+	valid_direction(Prop, Dir).
+
+valid_direction(forward, forward).
+valid_direction(back, back).
+valid_direction(around, back).
+valid_direction(left, left).
+valid_direction(right, right).
+
+%-------------------------------------------------------------------------
+
+% stop
+% @{stop1_5:modal}(stop ^ <Mood>imp ^ <Actor>(addressee1_5:entity ^ addressee) ^ <Subject>(addressee1_5:entity))
+understand : event : from_logical_form(Speaker, _Hearer, Nom) <-
+	i : prop(Nom, stop),
+	i : feat_Mood(Nom, imp),
+
+	? understand : i : intention(Nom, Int),
+	int : agent(Int, Speaker) / p(1.0),
+	int : string_content(Int, type, stop) / p(1.0).
+
+%-------------------------------------------------------------------------
+
+% continue
+understand : event : from_logical_form(Speaker, _Hearer, Nom) <-
+	i : prop(Nom, continue),
+	i : feat_Mood(Nom, imp),
+
+	? understand : i : intention(Nom, Int),
+	int : agent(Int, Speaker) / p(1.0),
+	int : string_content(Int, type, continue) / p(1.0).

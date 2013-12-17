@@ -1,0 +1,7 @@
+HOST localhost
+
+SUBARCHITECTURE gui 
+
+JAVA WM	cast.architecture.SubarchitectureWorkingMemory
+JAVA TM	cast.architecture.AlwaysPositiveTaskManager
+JAVA MG guistatemon eu.nifti.gui.cast.components.GUIStateMonitor --log true

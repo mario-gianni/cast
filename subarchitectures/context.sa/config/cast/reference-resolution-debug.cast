@@ -1,0 +1,3 @@
+INCLUDE reference-resolution.cast
+
+JAVA MG map-debug eu.nifti.context.cast.MapContextDebugger --log true

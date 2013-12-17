@@ -1,0 +1,126 @@
+<!--
+	Top-level NIFTi Ant build script. Heavily based on a similar
+	script made by Marc Hanheide (et al) in CogX.
+-->
+<project name="nifti-system" default="all">
+	<property name="projectroot.dir" value="${basedir}" />
+	<property file="build.properties" />
+
+	<target name="init" description="initialise the build process">
+		<tstamp/>
+	</target>
+
+	<!-- Build the main target. -->
+	<target name="all" depends="compile" description="build the main target">
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+	<!-- Convert CMake-generated properties to Ant conditions.
+	     The properties are supplied by `build.properties' -->
+	<condition property="build.slice">     	    <equals arg1="${build_slice}" arg2="ON" /> </condition>
+	<condition property="build.planning_sa">    <equals arg1="${build_sa_planning}" arg2="ON" /> </condition>
+	<condition property="build.planning_roma_sa">    <equals arg1="${build_sa_planning_roma}" arg2="ON" /> </condition>
+	<condition property="build.dialogue_sa">    <equals arg1="${build_sa_dialogue}" arg2="ON" /> </condition>
+	<condition property="build.memory_sa">      <equals arg1="${build_sa_memory}" arg2="ON" /> </condition>
+	<condition property="build.mapping_sa">     <equals arg1="${build_sa_mapping}" arg2="ON" /> </condition>
+	<condition property="build.navigation_sa">  <equals arg1="${build_sa_navigation}" arg2="ON" /> </condition>
+	<condition property="build.gui_sa">   	    <equals arg1="${build_sa_gui}" arg2="ON" /> </condition>
+        <condition property="build.ros_cast_bridge_sa"><equals arg1="${build_sa_ros_cast_bridge}" arg2="ON" /> </condition>
+	<condition property="build.context_sa">    <equals arg1="${build_sa_context}" arg2="ON" /> </condition>
+	<condition property="build.math">      	    <equals arg1="${build_math}" arg2="ON" /> </condition>
+	<condition property="build.castutils"> 	    <equals arg1="${build_castutils}" arg2="ON" /> </condition>
+	<condition property="build.beliefs">   	    <equals arg1="${build_beliefs}" arg2="ON" /> </condition>
+	<condition property="build.elm">      	    <equals arg1="${build_elm}" arg2="ON" /> </condition>	
+
+	<!-- Call the target in a subarchitecture/tool, IF
+	     it was specified to be compiled in the CMake process. -->
+	<target name="sa.mapping">    <ant target="${target}" dir="subarchitectures/mapping.sa" /> </target>
+	<target name="sa.planning_roma">  <ant target="${target}" dir="subarchitectures/planning_roma.sa" /> </target>
+	<target name="sa.planning">  <ant target="${target}" dir="subarchitectures/planning.sa" /> </target>
+	<target name="beliefs">	    <ant target="${target}" dir="tools/beliefs" /> </target>
+	<target name="sa.gui">     	    <ant target="${target}" dir="subarchitectures/gui.sa" /> </target>
+	<target name="sa.dialogue">  <ant target="${target}" dir="subarchitectures/dialogue.sa" /> </target>
+	<target name="sa.memory">      <ant target="${target}" dir="subarchitectures/memory.sa" /> </target>
+	<target name="sa.navigation"> <ant target="${target}" dir="subarchitectures/navigation.sa" /> </target>
+        <target name="sa.ros_cast_bridge">  <ant target="${target}" dir="subarchitectures/ros_cast_bridge.sa" /> </target>
+	<target name="sa.context">  <ant target="${target}" dir="subarchitectures/context.sa" /> </target>
+	<target name="math">           	    <ant target="${target}" dir="tools/math" /> </target>
+	<target name="castutils"> 	    <ant target="${target}" dir="tools/castutils" /> </target>
+	<target name="elm">    		    <ant target="${target}" dir="tools/elm" /> </target>	
+	<target name="abducer">    		    <ant target="${target}" dir="tools/abducer/api-java" /> </target>	
+
+	<!-- Template target, used to pass calls to subarchitectures
+	     and tools. -->
+	<target name="template" depends="init">
+		<echo>executing target &quot;${target}&quot; for all</echo>
+
+		<antcall target="math"><param name="target" value="${target}" /></antcall>
+		<antcall target="castutils"><param name="target" value="${target}" /></antcall>
+		<antcall target="elm"><param name="target" value="${target}" /></antcall>
+		<antcall target="beliefs"><param name="target" value="${target}" /></antcall>
+		<antcall target="abducer"><param name="target" value="${target}" /></antcall>
+
+		<!-- <antcall target="shared.slice"><param name="target" value="${target}" /></antcall> -->
+                <antcall target="sa.ros_cast_bridge"><param name="target" value="${target}" /></antcall>
+		<antcall target="sa.dialogue"><param name="target" value="${target}" /></antcall>
+		<antcall target="sa.mapping"><param name="target" value="${target}" /></antcall>
+		<antcall target="sa.planning"><param name="target" value="${target}" /></antcall>
+		<antcall target="sa.planning_roma"><param name="target" value="${target}" /></antcall>
+		<antcall target="sa.gui"><param name="target" value="${target}" /></antcall>
+		<antcall target="sa.memory"><param name="target" value="${target}" /></antcall>
+		<antcall target="sa.navigation"><param name="target" value="${target}" /></antcall>
+		<antcall target="sa.context"><param name="target" value="${target}" /></antcall>
+
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+	<target name="prepare" description="prepare the output directory">
+		<echo>preparing the output directory</echo>
+		<mkdir dir="${output.dir}"/>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+	<!-- <target name="shared.slice" if="build.slice">  
+		<ant target="${target}" dir="subarchitectures/shared-slice" /> 
+	</target> -->
+
+	<target name="slice" depends="prepare"
+			description="generate Java code from Slice definitions">
+		<echo>generating code from Slice definitions</echo>
+		<antcall target="template">
+			<param name="target" value="slice" />
+		</antcall>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+	<target name="compile" depends="prepare,slice,compile-slice" description="compile all builds">
+		<echo>compiling all</echo>
+		<antcall target="template">
+			<param name="target" value="compile" />
+		</antcall>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+	<target name="compile-slice" depends="prepare,slice" description="compile src-generated from all builds">
+		<echo>compiling slice</echo>
+		<antcall target="template">
+			<param name="target" value="compile-slice" />
+		</antcall>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+	<target name="clean" depends="init" description="clean all builds">
+		<echo>cleaning all</echo>
+		<delete dir="${output.dir}" />
+		<antcall target="template">
+			<param name="target" value="clean" />
+		</antcall>
+	</target>
+
+</project>

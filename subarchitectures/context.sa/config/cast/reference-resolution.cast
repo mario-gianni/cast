@@ -1,0 +1,7 @@
+HOST localhost
+
+SUBARCHITECTURE context 
+
+JAVA WM	cast.architecture.SubarchitectureWorkingMemory
+JAVA TM	cast.architecture.AlwaysPositiveTaskManager
+JAVA MG ref-resolution eu.nifti.context.cast.ReferenceResolution --log true

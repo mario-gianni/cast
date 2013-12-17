@@ -1,0 +1,46 @@
+HOST localhost
+
+# dialogue.sa
+VARDEFAULT mary_server_host=localhost
+VARDEFAULT mary_voice=dfki-spike-hsmm
+INCLUDE shared/dialogue.sa/minimal+gui.cast
+JAVA MG wizard-gui eu.nifti.wizard.DialogueWizard --log true --debug true
+# NIFTi Y2 eval components
+JAVA MG planverb de.dfki.lt.tr.cast.dialogue.NiftiY2PlanVerbGenerator --startup_utterance "Robot to operator. I am at your service." --log true
+
+## ROS-CAST BRIDGE AND GUI MONITOR
+INCLUDE shared/ros_cast_bridge.sa/ros_cast_bridge.cast
+INCLUDE shared/gui.sa/gui.cast
+
+# context.sa
+INCLUDE shared/context.sa/reference-resolution-debug.cast
+
+# func mapping
+INCLUDE shared/mapping.sa/mapping.cast
+
+#SUBARCHITECTURE	Planning
+#JAVA WM			 cast.architecture.SubarchitectureWorkingMemory
+#JAVA TM			 cast.architecture.AlwaysPositiveTaskManager
+
+
+SUBARCHITECTURE	PlanningROMA
+JAVA	WM	cast.architecture.SubarchitectureWorkingMemory
+JAVA	TM	cast.architecture.AlwaysPositiveTaskManager
+#CPP MG  StatusReader RobotStatusRW
+#CPP MG TopoGraphReader TopoGraphReader
+CPP MG RobotStatusWriter RobotStatusWriter
+CPP MG POSNAVWriter POSNAVWriter
+CPP MG TopoGraphWriter TopoGraphWriter
+CPP MG PoseWriter PoseWriter
+#CPP MG  World World
+#CPP MG  Robot Robot 
+#CPP MG PlanGenerator PlanGenerator
+#CPP MG TopoGraphBuilder TopoGraphBuilder
+#CPP MG Diagnostic Diagnostic
+#CPP MG EM EM
+#CPP MG POSNAVReader POSNAVReader
+CPP MG ExecutionMonitoring ExecutionMonitoring
+#CPP MG TaskWriter TaskWriter
+#CPP MG TopoGraphRequest TopoGraphRequest
+JAVA MG intToPlannerTask eu.nifti.planning.cast.IntentionToRomaPlanningTaskGenerator --log true
+

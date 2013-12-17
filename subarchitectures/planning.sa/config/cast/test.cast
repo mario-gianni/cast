@@ -1,0 +1,12 @@
+HOST localhost
+
+SUBARCHITECTURE  planning
+JAVA WM   cast.architecture.SubarchitectureWorkingMemory
+JAVA TM   cast.architecture.AlwaysPositiveTaskManager
+
+CPP MG	PlanningBridge PlanningBridge
+CPP MG	DummyPlanningTaskGenerator DummyPlanningTaskGenerator
+
+#SUBARCHITECTURE navigation
+#CPP WM SubarchitectureWorkingMemory
+#CPP TM AlwaysPositiveTaskManager

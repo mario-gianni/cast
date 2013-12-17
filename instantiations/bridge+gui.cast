@@ -1,0 +1,4 @@
+HOST localhost
+
+INCLUDE shared/ros_cast_bridge.sa/ros_cast_bridge.cast
+INCLUDE shared/gui.sa/gui.cast

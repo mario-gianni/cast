@@ -1,0 +1,11 @@
+# A very basic top-level CAST system instantiation.
+
+HOST localhost
+
+INCLUDE shared/dialogue.sa/main.cast
+INCLUDE shared/dialogue.sa/asr-loquendo.cast
+INCLUDE shared/dialogue.sa/gui-local.cast
+INCLUDE shared/dialogue.sa/gui-niftigui.cast
+INCLUDE shared/dialogue.sa/nlu-all.cast
+INCLUDE shared/dialogue.sa/manage-full.cast
+INCLUDE shared/dialogue.sa/nlg-all.cast

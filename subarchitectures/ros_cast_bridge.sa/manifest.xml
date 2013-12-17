@@ -1,0 +1,22 @@
+<package>
+  <description brief="ROS CAST bridge">
+
+     This application is both a CAST component and a ROS node. It converts data from one type to the other.
+
+  </description>
+  <author>Benoit Larochelle</author>
+  <license>To be determined</license>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+  <depend package="eu_nifti_env_msg_ros"/>
+  <depend package="eu_nifti_ocu_msg_ros"/>
+  <depend package="eu_nifti_cast"/>
+  <depend package="geometry_msgs"/>
+  <depend package="bullet"/>
+
+  <export> 
+        <cpp cflags="-I${prefix}/src/" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lros_cast_bridge_sa"/>
+  </export>
+</package>
+
+

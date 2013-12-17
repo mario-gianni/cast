@@ -1,0 +1,8 @@
+HOST localhost
+
+# dialogue.sa
+VARDEFAULT mary_server_host=localhost
+VARDEFAULT mary_voice=dfki-spike-hsmm
+INCLUDE shared/dialogue.sa/minimal+gui.cast
+JAVA MG wizard-gui eu.nifti.wizard.DialogueWizard --log true --debug true
+

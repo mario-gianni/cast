@@ -1,0 +1,8 @@
+# Basic dialogue.sa setup.
+
+HOST localhost
+SUBARCHITECTURE  dialogue
+# %(host:AbducerHost)
+
+JAVA WM			cast.architecture.SubarchitectureWorkingMemory
+JAVA TM			cast.architecture.AlwaysPositiveTaskManager

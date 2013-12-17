@@ -1,0 +1,25 @@
+#
+# rules for prototypical 'closed-world' reasoning
+# when a class is instantiated that is defined by related individuals,
+# those related individuals are also instantiated
+#
+# @author Hendrik Zender
+# @version Wed Dec 15 2010
+#
+
+$default1
+?individual <rdf:type> ?definedClass
+?definedClass <rdfs:subClassOf> ?restriction
+?restriction <owl:onProperty> ?property
+?restriction <rdf:type> <owl:Restriction>
+?restriction ?quantification ?roleFillerClass
+?roleFillerClass <rdfs:subClassOf> <owl:Thing>
+->
+?individual ?property ?newIns
+?newIns <rdf:type> <owl:Nothing>
+?newIns <rdf:type> ?roleFillerClass
+
+
+# @test
+# ! isBlankNode ?definedClass
+# ?quantification != <rdfs:subClassOf>

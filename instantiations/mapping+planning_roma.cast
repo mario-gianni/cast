@@ -1,0 +1,6 @@
+# A very basic top-level CAST system instantiation.
+
+HOST localhost
+
+INCLUDE ../subarchitectures/mapping.sa/config/cast/mapping.cast
+INCLUDE ../subarchitectures/planning_roma.sa/config/cast/planning_roma.cast

@@ -1,0 +1,10 @@
+# A very basic top-level CAST system instantiation.
+
+HOST localhost
+
+INCLUDE dialogue.cast
+INCLUDE shared/planning.sa/basic.cast
+
+SUBARCHITECTURE  navigation
+JAVA WM   cast.architecture.SubarchitectureWorkingMemory
+JAVA TM   cast.architecture.AlwaysPositiveTaskManager

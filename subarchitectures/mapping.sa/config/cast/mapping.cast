@@ -1,0 +1,12 @@
+HOST localhost
+
+SUBARCHITECTURE FunctionalMapping
+CPP WM SubarchitectureWorkingMemory
+CPP TM AlwaysPositiveTaskManager
+#CPP MG WMReader WMReader --debug true --log true
+JAVA MG hfcserver       de.dfki.lt.tr.mapping.cast.components.reasoning.hfc.HFCServer --stdNSFile "subarchitectures/mapping.sa/domains/defaultandfuncmap.ns" --stdRuleFile "subarchitectures/mapping.sa/domains/default.rdl"  --stdTupleFile "subarchitectures/mapping.sa/domains/default.nt" --otherTupleFiles "subarchitectures/mapping.sa/domains/funcmap.nt" --log false --otherRuleFiles "subarchitectures/mapping.sa/domains/funcmap.rdl" --debug false # --otherNSFiles "subarchitectures/mapping.sa/domains/funcmap.ns"
+CPP MG FEMAreasGenerator FEMAreasGenerator --debug false --log false --planningControl false --hfcserver-name hfcserver 
+JAVA MG mapobjmonitor   de.dfki.lt.tr.mapping.cast.components.MapObjectMonitor --hfcserver-name hfcserver --log false --debug false # --dsa dialogue
+#CPP MG FindFarthestFreeSpacePoint FindFarthestFreeSpacePoint --debug true --log true --giveGoalDirectlyToNavStack false
+#CPP MG findForwardUsingPointClouds findForwardUsingPointClouds --debug true --log true --costPath 1.12 --costDev 0.32 --costDist 0.32
+CPP MG findForwardUsingPointCloudsIterative findForwardUsingPointCloudsIterative --debug true --log true --linFactPath 2.24 --linFactDev 0.64 --linFactDist 0.64 --expFactDist 0.8 --expFactDev 0.4 --cloudClipX 5.0 

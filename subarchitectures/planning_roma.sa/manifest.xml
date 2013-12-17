@@ -1,0 +1,32 @@
+<package>
+  <description brief="nifti planning_roma cast">
+     nifti planning_roma subarchitecture ros-cast components
+  </description>
+  <author>Harmish</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/planning_roma</url>
+  <depend package="roscpp"/>
+  <depend package="rospy"/>
+  <depend package="std_msgs"/>
+  <depend package="tf"/>
+  <depend package="geometry_msgs"/>
+  <depend package="visualization_msgs"/>
+  <depend package="nifti_robot_driver_msgs"/>
+  <depend package="voronoiseg"/>
+  <depend package="sensor_msgs"/>
+  <depend package="gps_common"/>
+  <depend package="xsens_driver"/>
+  <depend package="actionlib"/>
+  <depend package="move_base_msgs"/>
+  <depend package="eclipse_prolog_msgs"/>
+  <depend package="module_control_action"/>
+  <depend package="gap_traversal_msgs"/>
+  <depend package="nifti_arm_msgs"/>
+  <depend package="nifti_ar_world_msgs"/>
+  <depend package="monitoring_msgs"/>
+  <depend package="nifti_robot_driver_msgs"/>
+
+</package>
+
+

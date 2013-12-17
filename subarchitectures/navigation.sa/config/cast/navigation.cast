@@ -1,0 +1,7 @@
+HOST localhost
+
+SUBARCHITECTURE navigation
+CPP WM SubarchitectureWorkingMemory
+CPP TM AlwaysPositiveTaskManager
+
+CPP MG NiftiNavigationGoals NiftiNavigationGoals

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+COMA_CLASS_PATH=`ls -1 @PREFIX@/mapping.libs/*.jar | tr "\n" ":"`
+OUTPUT_CLASS_PATH=`ls -1 @PREFIX@/jar/*.jar | tr "\n" ":"`
+
+echo "added mapping.sa external libs to CLASSPATH: $COMA_CLASS_PATH" >&2
+export CLASSPATH=@CAST_INSTALL_ROOT@/share/java/cast.jar:@ICE_HOME@/share/java/Ice.jar:@PREFIX@/classes:$COMA_CLASS_PATH:/usr/share/java/log4j-1.2.jar:$OUTPUT_CLASS_PATH:$CLASSPATH:
+echo "CLASSPATH=$CLASSPATH"
+export LD_LIBRARY_PATH=@PREFIX@/lib:@CURE_INSTALLROOT@/lib/cure:$ECLIPSE_LIB:$ROS_ROOT/../stacks/vision_opencv/opencv2/opencv/lib:$ROS_ROOT/../stacks/common/yaml_cpp/yaml-cpp/lib:$ROS_ROOT/../stacks/geometry/tf/lib:$ROS_ROOT/../stacks/common_msgs/sensor_msgs/lib:$ROS_ROOT/../stacks/geometry/bullet/lib:$ROS_ROOT/../stacks/ros_comm/utilities/message_filters/lib:$ROS_ROOT/../stacks/ros_comm/tools/rosrecord/lib:$ROS_ROOT/../stacks/ros_comm/utilities/xmlrpcpp/lib:$ROS_ROOT/../stacks/ros_comm/tools/rosconsole/lib:$ROS_ROOT/../stacks/ros_comm/clients/cpp/roscpp_serialization/lib:$ROS_ROOT/../stacks/common/actionlib/lib:$ROS_ROOT/../stacks/ros_comm/tools/rosbag/lib:$ROS_ROOT/../stacks/ros_comm/tools/topic_tools/lib:$ROS_ROOT/../stacks/ros_comm/clients/cpp/roscpp/lib:$ROS_ROOT/../stacks/ros_comm/utilities/rostime/lib:$ROS_ROOT/tools/rospack/lib:$ROS_ROOT/../stacks/ros_comm/utilities/cpp_common/lib:$ROS_ROOT/../stacks/geometry/kdl/lib:$ROS_ROOT/core/roslib/lib:@PREFIX@/../stacks/nifti_mapping/eu_nifti_env/lib:@PREFIX@/../stacks/nifti_mapping/eu_nifti_env_msg_ros/lib:@PREFIX@/../stacks/nifti_mapping/functional_mapping_helper/lib:@PREFIX@/../stacks/nifti_mapping/functional_understanding_of_unstructured_environments/lib:$LD_LIBRARY_PATH
+export PYTHONPATH=@PREFIX@/planner:@PREFIX@/python:$PYTHONPATH
+export DYLD_LIBRARY_PATH="$LD_LIBRARY_PATH:$DYLD_LIBRARY_PATH:"
+
+@CAST_INSTALL_ROOT@/bin/cast-server
+
+

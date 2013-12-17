@@ -1,0 +1,7 @@
+HOST localhost
+
+SUBARCHITECTURE  planning
+JAVA WM   cast.architecture.SubarchitectureWorkingMemory
+JAVA TM   cast.architecture.AlwaysPositiveTaskManager
+
+JAVA MG		int-to-task	eu.nifti.planning.cast.IntentionTaskGenerator --listen-sa dialogue --log true

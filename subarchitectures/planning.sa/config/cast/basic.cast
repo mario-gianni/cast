@@ -1,0 +1,10 @@
+HOST localhost
+
+SUBARCHITECTURE  planning
+JAVA WM   cast.architecture.SubarchitectureWorkingMemory
+JAVA TM   cast.architecture.AlwaysPositiveTaskManager
+
+JAVA MG		int-to-task	eu.nifti.planning.cast.IntentionTaskGenerator --listen-sa dialogue --log true
+#JAVA MG	planner		eu.nifti.planning.cast.PlanningCastComponent --log true --initialkb /home/harmishhk/work/fdd0-y1-branch/subarchitectures/planning.sa/src/eclipseclp/platform.ecl
+JAVA MG		guiplanning	eu.nifti.guiplanning.cast.NIFTiGUIComponent
+CPP MG		PlanningBridge	PlanningBridge

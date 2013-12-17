@@ -1,0 +1,8 @@
+SUBARCHITECTURE memory
+JAVA WM cast.architecture.SubarchitectureWorkingMemory
+JAVA TM cast.architecture.AlwaysPositiveTaskManager
+
+# heartbeat C++ ROS-CAST component
+CPP MG Memory Memory
+# elm Java component here
+JAVA MG MemoryLogger de.dfki.lt.tr.memory.writer.LoggingMemoryWriter
